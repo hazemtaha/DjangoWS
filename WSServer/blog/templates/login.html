@@ -1,0 +1,18 @@
+{% load staticfiles %}                                                                      
+<html>
+<head>
+</head>
+<body>
+<div class="content_dispaly">
+    <h3 class="tit"><span class="glyphicon glyphicon-circle-arrow-right "></span>Login</h3>
+        <form id="LoginForm" class="form col-md-5" method="post" action="/login/">
+            {% csrf_token %}
+            Email: <input type="text" name="mail" value="enter ur mail" size="50" class='form-control'/>
+            <br />
+            Password: <input type="password" name="password" value="" size="50" class='form-control'/>
+            <br />
+
+            <input type="submit" value="login" class="btn btn-primary"  />
+        </form>
+  
+</body>   
