@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from forms import *
 from django.forms.formsets import formset_factory
 from django import forms
@@ -7,21 +8,38 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
+from django.template import *
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django.contrib.auth.models import User
+
+
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+from django.core import serializers
 
 
 
 def index(request):
-    return render(request,'index.html')
+    #return render(request,'index.html')
+	form= Posts()
+	#if request.method == 'POST':
 
+	#else:
+	return render(request,'index.html',{'form':form} )
 
 
 def login(request):
 	form= LoginForm()
 	if request.method == 'POST':
-		email = request.POST.get('username')
+		email = request.POST.get('email')
 		password = request.POST.get('password')
-		user = authenticate(email=email, password=password)
+		user = authenticate(email=email , password=password)
 		if user:
 		   
 			login(request, user)
@@ -47,18 +65,19 @@ def registration(request):
     #return render(request,"registration.html")
 
 	registered = False
+	reg_form = RegistrationForm()
 	if request.method == 'POST':
-		user_form = UserForm(data=request.POST)
-		profile_form = UserProfileForm(data=request.POST)
-		if user_form.is_valid() and profile_form.is_valid():
-			user = user_form.save()
+		
+		if reg_form.is_valid():
+			user = reg_form.save()
 			user.set_password(user.password)
 			user.save()
 			registered = True
-		else:
-		    print user_form.errors, profile_form.errors
-	else:
-	    reg_form = RegistrationForm()
+			return render(request,'index.html' )
 
-	return render(request,'index.html',{'reg_form': reg_form,'registered': registered} )
+		else:
+		    print reg_form.errors
+		    return HttpResponse("Invalid login details supplied.")
+	else:
+	    return render(request,'registration.html',{'form': reg_form} )
 
