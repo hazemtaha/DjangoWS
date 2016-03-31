@@ -44,4 +44,21 @@ def login(request):
 
 
 def registration(request):
-    return render(request,"registration.html")
+    #return render(request,"registration.html")
+
+	registered = False
+	if request.method == 'POST':
+		user_form = UserForm(data=request.POST)
+		profile_form = UserProfileForm(data=request.POST)
+		if user_form.is_valid() and profile_form.is_valid():
+			user = user_form.save()
+			user.set_password(user.password)
+			user.save()
+			registered = True
+		else:
+		    print user_form.errors, profile_form.errors
+	else:
+	    reg_form = RegistrationForm()
+
+	return render(request,'index.html',{'reg_form': reg_form,'registered': registered} )
+
