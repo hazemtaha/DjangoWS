@@ -1,0 +1,50 @@
+body {
+	background: url(../images/bg.jpg);
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 40px;
+    background-color: #000;
+
+}
+.footer p {
+	text-align: center;
+	font-size: 20px;
+	color: #fff
+}
+
+.navbar{
+	background-color: #000;
+}
+
+nav a {
+
+	 font-size:1.3em;
+	color:#A3793D;
+	 display: block;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: #ffffff;
+}
+
+
+.con{
+
+	border-top-width: 2px;
+	border-top-style: outset;
+	border-top-color: black;
+	border-right-width: 2px;
+	border-right-style: outset;
+	border-right-color: black;
+	border-left-width: 2px;
+	border-left-style: outset;
+	border-left-color: black;
+	border-bottom-width: 2px;
+	border-bottom-style: outset;
+	border-bottom-color: black;
+
+}
