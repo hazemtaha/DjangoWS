@@ -81,10 +81,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog',
+<<<<<<< HEAD
         'HOST':'localhost',
         'USER':'root',
         'PASSWORD':'doaa',
          }
+=======
+        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': 'iti',
+    }
+>>>>>>> f3b83f219900df2f56237f61036d32e4e42cb81b
 }
 
 
@@ -125,3 +132,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+# django rest frame work related settings
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
