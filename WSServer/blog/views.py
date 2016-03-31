@@ -16,4 +16,4 @@ def login(request):
 
 
 def registration(request):
-    return render(request,"registrtion.html")
+    return render(request,"registration.html")
