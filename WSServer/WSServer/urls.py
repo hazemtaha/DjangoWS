@@ -13,11 +13,9 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+import settings
 from django.conf.urls import url, include
 from django.contrib import admin
-
-import settings
-
 from blog import views
 
 urlpatterns = [
@@ -25,7 +23,7 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls')),
     url(r'^ws/', include('ws.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')) ,
+
 
 ]
-STATIC_URL = '/static/'
